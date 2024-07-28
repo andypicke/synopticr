@@ -12,6 +12,7 @@ RoxygenNote: 7.3.2
 Imports: 
     httr,
     jsonlite,
-    lifecycle
+    lifecycle,
+    tidyr
 URL: https://github.com/andypicke/synopticr
 BugReports: https://github.com/andypicke/synopticr/issues
