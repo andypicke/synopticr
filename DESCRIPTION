@@ -11,6 +11,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Imports: 
     httr,
-    jsonlite
+    jsonlite,
+    lifecycle
 URL: https://github.com/andypicke/synopticr
 BugReports: https://github.com/andypicke/synopticr/issues
