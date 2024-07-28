@@ -17,6 +17,3 @@ Dataframe
 \description{
 Get latest data from weather stations
 }
-\examples{
-latest <- get_latest_data()
-}
