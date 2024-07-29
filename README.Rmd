@@ -81,7 +81,7 @@ str(meta)
 
 - Each row in the returned dataframe corresponds to a single station.
 
-- *I am currently working on improving this function to clean up variable names and add more options (requesting data for single stations etc.)*
+- *I am currently working on improving this function to clean up the variable names and add more options (requesting data for single stations etc.)*
 
 ```{r}
 

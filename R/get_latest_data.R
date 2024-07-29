@@ -35,4 +35,6 @@ get_latest_data <- function(wh_state = "CO", token = Sys.getenv("SYNOPTIC_API_KE
 
   df4$air_temp_value_1_date_time <- lubridate::as_datetime(df4$air_temp_value_1_date_time)
 
+  return(df4)
+
 }
