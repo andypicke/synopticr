@@ -13,6 +13,8 @@ Imports:
     httr,
     jsonlite,
     lifecycle,
-    tidyr
+    lubridate,
+    tidyr,
+    tidyselect
 URL: https://github.com/andypicke/synopticr
 BugReports: https://github.com/andypicke/synopticr/issues

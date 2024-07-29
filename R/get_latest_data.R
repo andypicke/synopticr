@@ -25,7 +25,14 @@ get_latest_data <- function(wh_state = "CO", token = Sys.getenv("SYNOPTIC_API_KE
   # the data we want is the "STATION" variable in the list
   df <- resp_parsed$STATION
 
-  # each station (row) contains a dataframe with observations; unpack into same dataframe
-  df2 <- tidyr::unnest(df,'OBSERVATIONS')
+  # each row in df corresponds to one station
+  # each station/row contains a dataframe with the observations
+  obs_names <- names(df$OBSERVATIONS)
+  df2 <- tidyr::unnest(df,'OBSERVATIONS') # unpack the OBSERVATIONS data frame
+
+  # the OBSERVATIONS dataframe contains a data frame for each measurement; unpack again
+  df4 <- tidyr::unnest(df2, tidyselect::all_of(obs_names),names_sep = "_")
+
+  df4$air_temp_value_1_date_time <- lubridate::as_datetime(df4$air_temp_value_1_date_time)
 
 }
