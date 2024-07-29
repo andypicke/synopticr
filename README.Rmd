@@ -16,26 +16,81 @@ knitr::opts_chunk$set(
 # synopticr
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/andypicke/synopticr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/andypicke/synopticr/actions/workflows/R-CMD-check.yaml)
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+
+[![R-CMD-check](https://github.com/andypicke/synopticr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/andypicke/synopticr/actions/workflows/R-CMD-check.yaml) [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+
 <!-- badges: end -->
 
-The goal of synopticr is to make it easy to get weather data from the synoptic API via R.
+The goal of {synopticr} is to make it easy to retrieve weather data from the [Synoptic Data](https://synopticdata.com/) [weather API](https://synopticdata.com/weatherapi/) via R.
 
 ## Installation
 
-You can install the development version of synopticr from [GitHub](https://github.com/) with:
+You can install the development version of {synopticr} from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("andypicke/synopticr")
 ```
 
-## Example
+## Authentication
 
-This is a basic example which shows you how to solve a common problem:
+You will need to [sign up for an api token](https://signin.synopticdata.com/u/signup/) before using the api. Synoptic offers free [open-access](https://synopticdata.com/pricing/open-access-pricing/) for non-commercial users. The functions in {synopticr} assume by default that your token is stored in your *.Renviron* file as SYNOPTIC_API_KEY="you_key_here". You can also pass in your api token explicitly if wanted.
 
-```{r example}
+::: callout-note
+To store your api key, I find the easiest way is to use the *edit_r_environ()* function from the {usethis} package.
+:::
+
+
+# Examples
+
+
+### Get networks
+
+The *get_networks()* function returns a dataframe of all the weather station networks available through the Synoptic api. 
+
+```{r}
+
 library(synopticr)
-## basic example code
+
+networks <- get_networks()
+
+str(networks)
+
 ```
+
+
+### Get station metadata
+
+The *get_metadata()* function will return a dataframe of stations and their metadata for a specified state. 
+
+- Note the *STID* for each station can be used in other functions to request data for a specific station.
+
+```{r }
+
+
+meta <- get_metadata(wh_state = "MA")
+
+#head(meta)
+str(meta)
+
+```
+
+### Get latest data *In Progress*
+
+*get_latest_data()* returns the latest available data for stations in 1 state.
+
+- Each row in the returned dataframe corresponds to a single station.
+
+- *I am currently working on improving this function to clean up variable names and allow for more options (requesting data for single stations etc.)*
+
+```{r}
+
+df <- get_latest_data(wh_state = "MA")
+
+library(dplyr)
+
+str(df)
+
+
+```
+
