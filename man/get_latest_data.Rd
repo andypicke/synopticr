@@ -4,10 +4,16 @@
 \alias{get_latest_data}
 \title{Get latest data from weather stations}
 \usage{
-get_latest_data(wh_state = "CO", token = Sys.getenv("SYNOPTIC_API_KEY"))
+get_latest_data(
+  wh_station = "KDEN",
+  wh_state = NULL,
+  token = Sys.getenv("SYNOPTIC_API_KEY")
+)
 }
 \arguments{
-\item{wh_state}{State to get data for}
+\item{wh_station}{Station to get data for.}
+
+\item{wh_state}{State to get data for. Default NULL. If specified will get data for all stations in state.}
 
 \item{token}{token (api key). Default is Sys.getenv("SYNOPTIC_API_KEY")}
 }
