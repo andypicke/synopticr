@@ -85,12 +85,27 @@ str(meta)
 
 ```{r}
 
-df <- get_latest_data(wh_state = "MA")
-
 library(dplyr)
+
+# get latest data one station
+df <- get_latest_data(wh_station = "KDEN")
+
+
+# get latest data for all stations in a state
+df <- get_latest_data(wh_state = "MA")
 
 str(df)
 
 
 ```
 
+
+```{r}
+
+# get latest data for all stations in a state
+df <- get_latest_data(wh_state = "MA")
+
+str(df)
+
+
+```
