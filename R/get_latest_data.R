@@ -4,7 +4,7 @@
 #' @param wh_state State to get data for. Default NULL. If specified will get data for all stations in state.
 #' @param token token (api key). Default is Sys.getenv("SYNOPTIC_API_KEY")
 #'
-#' @return Dataframe
+#' @return Dataframe of latest data for requested stations
 #' @export
 get_latest_data <- function(wh_station = "KDEN", wh_state = NULL, token = Sys.getenv("SYNOPTIC_API_KEY")){
 
