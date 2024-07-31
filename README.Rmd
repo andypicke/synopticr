@@ -109,3 +109,21 @@ str(df)
 
 
 ```
+
+
+### Get timeseries data 
+
+*get_timeseries_data()* returns a timeseries of data for a station.
+
+```{r}
+
+library(ggplot2)
+
+df <- get_timeseries_data(wh_station = "KDEN")
+
+df |> ggplot(aes(date_time, air_temp_set_1, group = 1)) + geom_point()
+
+```
+
+
+
