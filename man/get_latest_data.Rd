@@ -18,7 +18,7 @@ get_latest_data(
 \item{token}{token (api key). Default is Sys.getenv("SYNOPTIC_API_KEY")}
 }
 \value{
-Dataframe
+Dataframe of latest data for requested stations
 }
 \description{
 Get latest data from weather stations

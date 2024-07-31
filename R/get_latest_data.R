@@ -15,6 +15,9 @@ get_latest_data <- function(wh_station = "KDEN", wh_state = NULL, token = Sys.ge
   if (is.null(wh_state)) {
     req_url <- paste0(base_url, endpoint, "?token=", token, "&stid=", wh_station)
   } else {
+    if (!(wh_state %in% datasets::state.abb)) { # check if state is valid
+      stop("state not valid")
+    }
     req_url <- paste0(base_url, endpoint, "?token=", token, "&state=", wh_state)
   }
 
