@@ -10,11 +10,14 @@
 get_metadata <- function(wh_state = "CO", token = Sys.getenv("SYNOPTIC_API_KEY")){
 
   base_url <- "https://api.synopticdata.com/v2/"
+
   endpoint <- "stations/metadata"
-  #req_url <- paste0(base_url,endpoint,"?token=", token)
+
   req_url <- paste0(base_url,endpoint,"?token=", token, "&state=", wh_state)
-  resp <- httr::GET(req_url)
-  resp_parsed <- jsonlite::fromJSON(httr::content(resp, as = "text", encoding = "UTF-8"))
+
+  # Send the API request and get response
+  resp_parsed <- execute_api_request(req_url)
+
   df <- resp_parsed$STATION # for data
 
   df$LATITUDE <- as.numeric(df$LATITUDE)
