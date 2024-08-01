@@ -43,6 +43,11 @@ get_latest_data <- function(wh_station = "KDEN",
 
   df4$air_temp_value_1_date_time <- lubridate::as_datetime(df4$air_temp_value_1_date_time)
 
+  df4$LATITUDE <- as.numeric(df4$LATITUDE)
+  df4$LONGITUDE <- as.numeric(df4$LONGITUDE)
+
+
+
   return(df4)
 
 }
