@@ -7,13 +7,16 @@
 get_latest_data(
   wh_station = "KDEN",
   wh_state = NULL,
+  units = c("english", "metric"),
   token = Sys.getenv("SYNOPTIC_API_KEY")
 )
 }
 \arguments{
 \item{wh_station}{Station to get data for.}
 
-\item{wh_state}{State to get data for. Default NULL. If specified will get data for all stations in state.}
+\item{wh_state}{State (abbreviated) to get data for. Default NULL. If specified will get data for all stations in state.}
+
+\item{units}{c("english", "metric") - Default "english"}
 
 \item{token}{token (api key). Default is Sys.getenv("SYNOPTIC_API_KEY")}
 }
